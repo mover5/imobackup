@@ -1,0 +1,32 @@
+<script>
+$(document).ready(function() {
+    $("div#previewvideo").hide();
+    $("button#preview").click(function(){
+        var url = $("input#url").attr("value"),
+        id, embed;
+        if (url.indexOf("&") > 0) {
+            id = url.substring(url.indexOf("v=")+2, url.indexOf("&"));
+        } else {
+            id = url.substring(url.indexOf("v=")+2);        
+        }
+        embed = "http://www.youtube.com/embed/" + id;
+        $("iframe#videoframe").attr("src", embed);
+        $("div#previewvideo").show();
+    });
+    $("button#submit").click(function(){
+        var bandid = $("select#bandid").attr("value"),
+        festid = $("select#festid").attr("value"),
+        type = $("select#type").attr("value"),
+        url = $("input#url").attr("value"),
+        conacurl, data;
+        if (url.indexOf("&") > 0) {
+            conacurl = url.substring(0, url.indexOf("&"));
+        } else {
+            conacurl = url;
+        }
+        data = {"submit": "submit", "festid": festid, "bandid": bandid, "type": type, "url": conacurl};
+        $("div#message").load("controller/upload_video.php", data);
+    });
+});
+</script>
+

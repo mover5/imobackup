@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates application="ipchat" templategroups="a:1:{s:11:&quot;skin_ipchat&quot;;s:8:&quot;contains&quot;;}">
+  <templategroup group="skin_ipchat">
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<div class='chat-photo'><if test="isMember3:|:$data['member']['member_id']"><a target='_blank' href="{parse url="showuser={$data['member']['member_id']}" seotitle="{$data['member']['members_seo_name']}" template="showuser" base="public"}" title='{$this->lang->words['view_profile']}' id='link_{$data['member']['member_id']}' class='ipsUserPhotoLink'></if><img src='{$data['member']['pp_mini_photo']}' alt="{parse expression="sprintf($this->lang->words['users_photo'],$data['member']['members_display_name'])"}" class='ipsUserPhoto ipsUserPhoto_mini' /><if test="isMember4:|:$data['member']['member_id']"></a></if></div>
+	<span class='names'><if test="hasname:|:$data['member']['members_display_name']"><span title='{$data['member']['members_display_name']}'><if test="formatnameajax:|:$this->settings['ipschat_format_names']">{IPSMember::makeNameFormatted( IPSText::truncate( $data['member']['members_display_name'], 16 ), $data['member']['member_group_id'] )}<else />{IPSText::truncate( $data['member']['members_display_name'], 16 )}</if></span><else />{$data['user_name']}</if></span>]]></template_content>
+      <template_name>ajaxNewUser</template_name>
+      <template_data>$data=array()</template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>mobile</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<li id='nav_chat'><a href='{parse url="app=ipchat" seotitle="false" base="public"}' title='{parse expression="sprintf( $this->lang->words['go_to_prefix'], IPSLib::getAppTitle( 'ipchat' ) )"}'><span class='icon'></span>{IPSLib::getAppTitle( 'ipchat' )}</a></li>]]></template_content>
+      <template_name>chatMobileLink</template_name>
+      <template_data/>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>mobile</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<script type='text/javascript'>
+//<!#^#|CDATA|
+	jsDebug			= {parse expression="intval($this->settings['_jsDebug'])"}; /* Must come before JS includes */
+	USE_RTE			= 1;
+	DISABLE_AJAX	= parseInt({$this->settings['disable_text_ajax']}); /* Disables ajax requests where text is sent to the DB; helpful for charset issues */
+	inACP			= false;
+	var isRTL		= false;
+	var rtlIe		= '';
+	var rtlFull		= '';
+//|#^#]>
+</script>
+<script type='text/javascript' src='{$this->settings['js_base_url']}js/3rd_party/scriptaculous/scriptaculous-cache.js'></script>
+<script type='text/javascript' src='{$this->settings['js_base_url']}js/ipb.js'></script>
+<script type='text/javascript' src='{$this->settings['js_base_url']}js/ips.chat.js'></script>
+<script type='text/javascript'>
+	ipb.vars['base_url'] 			= '<if test="$this->registry->output->isHTTPS">{parse expression="str_replace( 'http://', 'https://', "{$this->settings['js_base']}" )"}<else />{$this->settings['js_base']}</if>';
+	ipb.vars['board_url']			= '{$this->settings['board_url']}';
+	ipb.vars['img_url'] 			= "{$this->settings['img_url']}";
+	ipb.vars['member_id']			= parseInt( {$this->memberData['member_id']} );
+	ipb.vars['is_supmod']			= parseInt( {parse expression="intval($this->memberData['g_is_supmod'])"} );
+	ipb.vars['is_admin']			= parseInt( {$this->memberData['g_access_cp']} );
+	ipb.vars['secure_hash'] 		= '{$this->member->form_hash}';
+	ipb.vars['session_id']			= '{$this->member->session_id}';
+	ipb.vars['is_touch']			= <if test="istl:|:$this->registry->output->isLargeTouchDevice()">'large';<else /><if test="istm:|:$this->registry->output->isSmallTouchDevice()">'small';<else />false;</if></if>
+	ipb.vars['member_group']		= {parse expression="json_encode( array( 'g_mem_info' => $this->memberData['g_mem_info'] ) )"}
+	ipb.vars['cookie_id'] 			= '{$this->settings['cookie_id']}';
+	ipb.vars['cookie_domain'] 		= '{$this->settings['cookie_domain']}';
+	ipb.vars['cookie_path']			= '{$this->settings['cookie_path']}';
+	ipb.vars['charset']				= "{$this->settings['gb_char_set']}";
+	ipb.vars['seo_enabled']			= {parse expression="intval($this->settings['use_friendly_urls'])"};
+	<if test="usefurl:|:$this->settings['use_friendly_urls']">
+	ipb.vars['seo_params']			= {parse expression="json_encode($this->registry->getClass('output')->seoTemplates['__data__'])"};
+	</if>
+	Loader.boot();
+		
+	// Basic variables
+	var roomId		= {$options['roomId']};
+	var userId		= {$options['userId']};
+	var userName	= '<if test="isMember:|:$this->memberData['member_id']">{$this->memberData['members_display_name']}<else />{$this->memberData['members_display_name']}_{$options['userId']}</if>';
+	var accessKey	= '{$options['accessKey']}';
+	var serverHost	= '{$options['serverHost']}';
+	var serverPath	= '{$options['serverPath']}';
+	var ourUrl		= '{$options['ourUrl']}';
+	var isMobile	= 1;
+	// Chat settings	
+	ipb.chat.condenseTime		= parseInt({$this->settings['ipchat_limit_time']});
+	ipb.chat.maxMessages		= 50; // Force to 50 on mobile as we do not have a scrollable div... parseInt({$this->settings['ipchat_max_messages']});
+	ipb.chat.moderator			= parseInt({$options['moderator']});
+	ipb.chat.private			= parseInt({$options['private']});
+	ipb.chat.hideEnterExit		= parseInt({$this->settings['ipchat_hide_usermessage']});
+	ipb.chat.noBuffer			= parseInt('{$this->settings['ipchat_no_buffer']}');
+	ipb.chat.inactiveKick		= parseInt('{$this->settings['ipchat_inactive_minutes']}');
+	ipb.chat.user24hour 		= parseInt('{$this->settings['ipchat_24hour']}');
+	
+	// Set up templates
+	ipb.chat.templates['msg-1']				= new Template( "<li class='post chat-message #{ownclass}'>#{photo} <label>#{username}</label> <div>#{message}</div></li>" );
+	ipb.chat.templates['msg-1-compound']	= new Template( "<li class='post chat-message #{ownclass}'><div class='hider'>&nbsp;</div><div>#{message}</div></li>" );
+	ipb.chat.templates['msg-2']				= new Template( "<li class='post chat-notice'>#{photo} <label>#{username}</label> <div>#{action}</div></li>" );
+	ipb.chat.templates['msg-3']				= new Template( "<li class='post chat-me'>#{photo} <label>#{username}</label> <div>**#{message}**</div></li>" );
+	ipb.chat.templates['msg-4']				= new Template( "<li class='post chat-system'>{$this->lang->words['sys_message_pre']} #{message}</li>" );
+	ipb.chat.templates['msg-5']				= new Template( "<li class='post chat-moderator'><label class='fluid'>#{username}</label> <div>{$this->lang->words['_kicked']} #{extra}</div></li>" );
+	ipb.chat.templates['msg-K']				= new Template( "<li class='post chat-moderator'><div>{$this->lang->words['youve_been_kicked']}</div></li>" );
+	ipb.chat.templates['send_private']		= new Template( "<div id='priv_#{id}_wrap'><h3 class='bar'>{$this->lang->words['sendprivatechat']}</h3><div class='chat-private-message'><textarea name='message_content' id='priv_chat_text_#{id}' cols='15' rows='2'></textarea> <input type='submit' value='{$this->lang->words['sendprivatebutton']}' id='#{id}_submit' onclick='return ipb.chat.sendPrivateChat( #{id} );' /></div></div>" );
+	ipb.chat.templates['new-tab']			= new Template( "<a href='#tab-#{id}' rel='#{id}'>#{name}&nbsp;&nbsp;&nbsp;<img src='{$this->settings['img_url']}/chat/cross.png' alt='x' class='right' id='close-chat-tab-#{id}' /></a>" );
+	ipb.chat.templates['count-title']		= new Template( "{parse expression="str_replace( '%s', '#{count}', $this->lang->words['chattab_count'] )"}" );
+	
+	// Set some language vars
+	ipb.lang['time_am']				= "{$this->lang->words['time_am']}";
+	ipb.lang['time_pm']				= "{$this->lang->words['time_pm']}";
+	ipb.lang['entered_room']		= " {$this->lang->words['entered_room']}";
+	ipb.lang['left_room']			= " {$this->lang->words['left_room']}";
+	ipb.lang['chat_kick_user']		= "{$this->lang->words['mobile_kick']}";
+	ipb.lang['chat_ban_user']		= "{$this->lang->words['mobile_ban']}";
+	ipb.lang['chat_priv_user']		= "{$this->lang->words['mobile_start_private']}";
+	ipb.lang['cant_kick_self']		= "{$this->lang->words['cant_kick_self']}";
+	ipb.lang['youve_been_kicked']	= "{$this->lang->words['youve_been_kicked']}";
+	ipb.lang['block_priv_user']		= "{$this->lang->words['mobile_ignore_private']}";
+	ipb.lang['unblock_priv_user']	= "{$this->lang->words['mobile_unignore_private']}";
+	ipb.lang['cant_block_user']		= "{$this->lang->words['cant_block_user']}";
+	ipb.lang['noprivate_withignored'] = "{$this->lang->words['noprivate_withignored']}";
+	ipb.lang['ban_user_confirm']	= "{$this->lang->words['banconfirmpopup']}";
+	ipb.lang['leave_room']			= "{$this->lang->words['leave_room']}";
+	ipb.chat.emoticons			= \$H({ {IPSLib::fetchEmoticonsAsJson( $this->registry->output->skin['set_emo_dir'], true )} });
+	ipb.vars['emoticon_url']	= "{$this->settings['emoticons_url']}";
+	ipb.vars['img_url']			= '{$this->settings['img_url']}';
+	
+	// Sound
+	ipb.chat.soundEnabled		= 0;
+	ipb.chat.soundOnImg			= "{$this->settings['img_url']}/bell.png";
+	ipb.chat.soundOffImg		= "{$this->settings['img_url']}/bell_off.png";
+	
+	// Chatters name formatting
+	<foreach loop="formatname:$chatters as $data">
+		ipb.chat.nameFormatting.set( {$data['user_id']}, [ "<if test="useprefix:|:$this->settings['ipschat_format_names']">{$data['member']['prefix']}</if>", "<if test="usesuffix:|:$this->settings['ipschat_format_names']">{$data['member']['suffix']}</if>", "{$data['member']['members_display_name']}", "<img class='ipsUserPhoto ipsUserPhoto_mini' src='{$data['member']['pp_small_photo']}' />" ] );
+	</foreach>
+	// Ignore private chats from..
+	<foreach loop="forumidmap:$chatters as $data">
+		ipb.chat.forumIdMap.set( {$data['user_id']}, [ parseInt("{$data['member']['member_id']}"), parseInt("{$data['member']['_canBeIgnored']}"), parseInt("{$data['member']['g_id']}") ] );
+	</foreach>
+	<if test="hasignoredprivate:|:isset( $this->memberData['_ignoredUsers'] ) AND count( $this->memberData['_ignoredUsers'] )">
+		<foreach loop="ignoredprivatechatters:$this->memberData['_ignoredUsers'] as $_forumMemberId => $_types">
+			<if test="isIgnoringChats:|:$_types['ignore_chats']">
+				ipb.chat.ignoreChats.set( '{$_forumMemberId}', '{$_forumMemberId}' );
+			</if>
+		</foreach>
+	</if>
+	
+	// Badwords
+	<if test="hasbadwords:|:is_array($this->caches['badwords']) AND count($this->caches['badwords'])">
+		<foreach loop="badwordsloop:$this->caches['badwords'] as $data">
+			ipb.chat.badwords.set( '{$data['type']}', [ {$data['m_exact']}, "{$data['swop']}" ] );
+		</foreach>
+	</if>
+	
+	// Groups
+	<foreach loop="grouploop:$this->caches['group_cache'] as $gdata">
+		ipb.chat.groups.set( '{$gdata['g_id']}', [ "<if test="useprefix:|:$this->settings['ipschat_format_names']"><if test="fixgroupname:|:$_temp = str_replace( '"', '__DBQ__', $gdata['prefix'] )">{$_temp}</if></if>", "<if test="useprefix:|:$this->settings['ipschat_format_names']"><if test="$_temp = str_replace( '"', '__DBQ__', $gdata['suffix'] )">{$_temp}</if></if>", parseInt("{$gdata['g_bypass_badwords']}") ] );
+	</foreach>
+	
+	document.observe("dom:loaded", function() {
+		$('chatters-online-toggle').observe( 'click', function(e) {
+			Event.stop(e);
+			
+			$('chatters-online').toggle();
+			
+			if( ( navigator.userAgent.match(/iPhone OS 2/i) ) || ( navigator.userAgent.match(/iPhone OS 3/i) ) || ( navigator.userAgent.match(/iPhone OS 4/i) ) )
+			{
+				$('chat-form').setStyle( { top: (window.pageYOffset + window.innerHeight - 34) + 'px' } );
+			}
+			
+			return false;
+		});
+	});
+</script>
+<h2>{IPSLib::getAppTitle('ipchat')}</h2>
+<div class='clearfix'>
+	<div>
+		<div id='chat-room-list' style='display:none' class='master_list'>
+			<h3 class='title'>{$this->lang->words['chats']}</h3>
+			<div id='chat-tab-wrapper'>
+				<ul id='chat-tab-holder'>
+					<li class='active' id='tab-chatroom'><a href='#tab-chatroom' rel='chatroom'>{$this->lang->words['chat_tab_home']}</a></li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+	<div class='ipsBox_container ipsLayout_content'>
+		<div id='scrollbar_container'>
+			<div id='messages-display'><span id='initial_message'>{$this->lang->words['please_wait_chats']}</span></div>
+		</div>
+		<form id='chat-form' action='#' method='post'>
+			<div id='editor_message'>
+				<div id='message_wrap' class='editor'>
+					<textarea name="message" id="message_textarea" rows="1" cols="50" tabindex="0" maxlength="450"></textarea>
+				</div>
+			</div>
+			<input type='submit' id='chat-submit' class='input_submit' value='{$this->lang->words['chat_post_button']}' />
+		</form>
+	</div>
+	<div class='master_list' id='chatters-online-wrap'>
+		<h3 class='title' id='chatters-online-toggle'><span id='online-chat-count'><if test="$_count = count($chatters)">{$_count}<else />0</if></span> {$this->lang->words['whos_chatting_ttl']}</h3>
+		<ul id='chatters-online' style='display: none;'>
+			<foreach loop="$chatters as $data">
+				<li id='user_{$data['user_id']}'>
+					<div class='chat-photo'><if test="isMember:|:$data['member']['member_id']"><a target='_blank' href="{parse url="showuser={$data['member']['member_id']}" seotitle="{$data['member']['members_seo_name']}" template="showuser" base="public"}" title='{$this->lang->words['view_profile']}' id='link_{$data['member']['member_id']}' class='ipsUserPhotoLink'></if><img src='{$data['member']['pp_mini_photo']}' alt="{parse expression="sprintf($this->lang->words['users_photo'],$data['member']['members_display_name'])"}" class='ipsUserPhoto ipsUserPhoto_mini' /><if test="isMember2:|:$data['member']['member_id']"></a></if></div>
+					<span class='names'><if test="hasname:|:$data['member']['members_display_name']"><span title='{$data['member']['members_display_name']}'><if test="formatname:|:$this->settings['ipschat_format_names']">{IPSMember::makeNameFormatted( IPSText::truncate( $data['member']['members_display_name'], 16 ), $data['member']['member_group_id'] )}<else />{IPSText::truncate( $data['member']['members_display_name'], 16 )}</if></span><else />{$data['user_name']}</if></span>
+					
+					<ul class='kickmenu' id='mod_link_{$data['user_id']}_menucontent'>
+						<if test="nokickself:|:$data['user_id'] != $options['userId']">
+							<if test="ismoderatormenu:|:$options['moderator']">
+								<li><a href='#' title='{$this->lang->words['chat_kick_user']}' class='kick_user' id='kick_user_{$data['user_id']}'>{$this->lang->words['mobile_kick']}</a></li>
+								<li><a href='#' title='{$this->lang->words['chat_ban_user']}' class='ban_user' id='ban_user_{$data['user_id']}_{$data['member']['member_id']}'>{$this->lang->words['mobile_ban']}</a></li>
+							</if>
+							<if test="isprivmenu:|:$options['private']">
+								<li><a href='#' title='{$this->lang->words['mobile_start_private']}' class='priv_user' id='priv_user_{$data['user_id']}_{$data['member']['member_id']}'>{$this->lang->words['mobile_start_private']}</a></li>
+							</if>
+							<if test="isignoringuser:|:($data['member']['member_id'] AND isset( $this->memberData['_ignoredUsers'][ $data['member']['member_id'] ] ) AND $this->memberData['_ignoredUsers'][ $data['member']['member_id'] ]['ignore_chats']) OR (!$data['member']['member_id'] AND $this->memberData['_ignoredUsers'][ 'g_' . $data['user_id'] ]['ignore_chats'])">
+								<li><a href='#' title='{$this->lang->words['mobile_unignore_private']}' class='unblock_user' id='block_user_{$data['user_id']}_{$data['member']['member_id']}'>{$this->lang->words['mobile_unignore_private']}</a></li>
+							<else />
+								<li><a href='#' title='{$this->lang->words['mobile_ignore_private']}' class='block_user' id='block_user_{$data['user_id']}_{$data['member']['member_id']}'>{$this->lang->words['mobile_ignore_private']}</a></li>
+							</if>
+						<else />
+							<li><a href='{parse url="module=ipschat&amp;section=chat&amp;do=leave&amp;room={$options['roomId']}&amp;user={$options['userId']}&amp;access_key={$options['accessKey']}&amp;secure_key={$this->member->form_hash}<if test="$this->request['_popup']">&amp;popup=1</if>" base="publicWithApp"}' title='{$this->lang->words['leave_room']}' id='leave_room'>{$this->lang->words['leave_room']}</a></li>
+						</if>
+					</ul>
+				</li>
+			</foreach>
+		</ul>
+	</div>
+</div>
+			
+<!--Iframes used for cross-domain "AJAX"-->
+<div id='iframeContainer'>
+<div id='storage_container_chatroom' class='storage-container'><ul id='storage_chatroom'></ul></div>
+</div>]]></template_content>
+      <template_name>chatRoom</template_name>
+      <template_data>$options=array(), $chatters=array()</template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>mobile</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<h2>{$this->lang->words['chat_rules_title']}</h2>
+<form action='{parse url="app=ipchat" base="public" seotitle="false" template="app=ipchat"}' method='post'>
+	<input type='hidden' name='agree' value='1' />
+	<if test="showPopup:|:$this->request['_popup']">
+		<input type='hidden' name='_popup' value='1' />
+	</if>	
+	<div>
+		<div class='padding progress_bar'>
+			{$rules}
+		</div>
+		<fieldset class='submit'>
+			<input type='submit' value='{$this->lang->words['chat_agree_button']}' class='submit' />
+		</fieldset>
+	</div>
+</form>]]></template_content>
+      <template_name>chatRules</template_name>
+      <template_data>$rules</template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>mobile</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>chatUnbanModcp</template_name>
+      <template_data>$member</template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>newWindow</template_name>
+      <template_data/>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<if test="(!$this->settings['ipchat_htc_view'] OR IPS_APP_COMPONENT != 'ipchat') AND (!$this->settings['ipchat_htc_zero'] OR $count > 0)">
+<div id='chat-tab-count-wrap'><span id='chat-tab-count' class='ipsHasNotifications' title='{parse expression="sprintf( $this->lang->words['chattab_count'], $count )"}' style='display:none;'>{$count}</span></div>
+<script type='text/javascript'>
+// And then move
+document.observe("dom:loaded", function(){
+	var _thisHtml	= $('nav_chat').down('a').innerHTML;
+	_thisHtml = _thisHtml + $('chat-tab-count-wrap').innerHTML;
+	$('nav_chat').down('a').update( _thisHtml );
+	$('chat-tab-count-wrap').remove();
+	$('chat-tab-count').show();
+});
+</script>
+</if>]]></template_content>
+      <template_name>tabCount</template_name>
+      <template_data>$count</template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>mobile</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>whoschatting_empty</template_name>
+      <template_data/>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+    <template>
+      <template_group>skin_ipchat</template_group>
+      <template_content><![CDATA[<!--no data in this master skin-->]]></template_content>
+      <template_name>whoschatting_show</template_name>
+      <template_data><![CDATA[$total="",$names=""]]></template_data>
+      <template_removable>0</template_removable>
+      <template_user_added>0</template_user_added>
+      <template_user_edited>0</template_user_edited>
+      <template_master_key>root</template_master_key>
+    </template>
+  </templategroup>
+</templates>

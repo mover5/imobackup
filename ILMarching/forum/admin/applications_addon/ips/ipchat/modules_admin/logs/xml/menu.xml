@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<tabitems>
+		<item>
+			<title>Chat Logs</title>
+			<subitems>
+				<subitem>
+					<subitemtitle>Chat Logs</subitemtitle>
+					<subitemlang>ipchat_logs</subitemlang>
+					<subsection>logs</subsection>
+					<subitemurl></subitemurl>
+					<subitemrolekey></subitemrolekey>
+					<subisredirect>0</subisredirect>
+				</subitem>
+			</subitems>
+		</item>
+	</tabitems>
+</menu>

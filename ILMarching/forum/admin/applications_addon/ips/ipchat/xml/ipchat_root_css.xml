@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<css>
+  <cssfile>
+    <css_set_id>0</css_set_id>
+    <css_updated>1369791761</css_updated>
+    <css_group>ipchat</css_group>
+    <css_content><![CDATA[#scrollbar_container {
+	position: relative;
+} 
+
+#messages-display {
+	overflow: auto;
+	margin-left: 0px;
+	height: 350px;
+	margin-bottom: 4px;
+	background: #fff;
+	position: relative; /* Necessary for the hider div to hide the border */
+}
+
+	.messages-list img.ipsUserPhoto {
+		display: block;
+		float: left;
+		font-weight: bold;
+		margin: 1px;
+		text-align: right;
+	}
+
+	.messages-list label {
+		display: block;
+		font-weight: bold;
+		font-size: 13px;
+		margin-left: 40px;
+		margin-bottom: 3px;
+	}
+	
+		.messages-list label.fluid {
+			display: inline;
+			float: left;
+			margin-right: 4px;
+			font-size: 12px;
+		}
+	
+	.messages-list li {
+		border-bottom: 1px solid #e3e3e3;
+		padding: 4px;
+		font-size: 12px;
+		overflow: auto;
+	}
+	
+	.messages-list div {
+		margin-left: 40px;
+	}
+	
+	.messages-list div.hider {
+		float: left;
+		background-color: inherit; /* Pull appropriate bg color */
+		width: 43px;
+		margin-left: -4px; /* Counter the padding from the li */
+		margin-top: -6px; /* Moves div up to hide the bottom border */
+		position: absolute; /* Needed to show it on top */
+	}
+
+
+#chat-form {
+	border: 1px solid #d5dde5;
+	border-bottom-width: 4px;
+	padding: 4px;
+	background: #eef3f8;
+	position: relative;
+}
+
+#ipboard_body #editor_message {
+	margin: 0px;	
+	margin-right: 150px;
+	border: 0;	
+}
+
+	#ipboard_body #editor_message textarea {
+		height: 40px;
+		width: 99.7%;
+		resize: none; /* disables the grip on safari */
+		outline: 0; /* disables the 'halo' */
+	}
+
+	#ipboard_body #editor_message .toolbar {
+		padding: 0;
+	}
+	
+#chat-submit {
+	height: 45px;
+	padding: 0 15px;
+	float: right;
+	vertical-align: top;
+	position: absolute;
+	right: 15px;
+	top: 20px;
+}
+
+.chat-me {
+	font-style: italic;
+	background-color: #e2f3e2;
+}
+
+.messages-list li.chat-time {
+	font-size: 11px;
+	font-weight: bold;
+	color: #4f4f4f;
+}
+
+.messages-list li.chat-system {
+	font-weight: bold;
+	color: #fff;
+	background: #913535;
+	padding: 6px 20px;
+}
+
+.chat-message {
+	background-color: #FFF;
+}
+
+.chat-myown {
+	background-color: #F0FFFF;
+}
+
+.chat-notice {
+	background-color: #FAFAD2;
+}
+
+.chat-moderator {
+	background-color: #f2e4e7;
+}
+
+ul.kickmenu {
+	background-color: #f7f9fb;
+	border: 1px solid #d5dde5;
+	margin-top: 0px;
+	width: 170px;		
+	float: right;
+	z-index: 10000;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 6px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 6px;
+}
+
+	ul.kickmenu li {
+		padding: 1px;
+		float: none;
+	}
+
+	ul.kickmenu a {
+		text-decoration: none;
+		padding: 4px 4px 4px 4px;
+		display: block;
+		font-size: 11px;
+	}
+
+		ul.kickmenu a:hover {
+			background: #d5dde5;
+		}
+
+#chatters-online-wrap {
+	overflow: auto;
+	max-height: 200px;
+	bottom: 30px;
+}
+
+#chatters-online {
+	list-style: none;
+	padding: 5px;
+}
+
+	#chatters-online li {
+		padding-bottom: 3px;
+		padding-top: 3px;
+		border-bottom: 1px solid #f6f6f6;
+		height: 30px;
+		
+	}
+
+#initial_message {
+	display: block;
+	padding: 15px;
+	color: #5e5e5e;
+	font-style: italic;
+}
+
+/* Kill the loading bar at the top */
+
+#ipboard_body #ajax_loading {
+	display: none;
+}
+
+#emoticons_custom_menu_menucontent {
+	border: 1px solid #1d3652;
+	height: 400px;
+	width: 200px;
+	overflow: auto;
+}
+
+.chat-photo {
+	width: 30px;
+	max-width: 30px;
+	min-width: 30px;
+	height: 30px;
+	min-height: 30px;
+	max-height: 30px;
+	display: inline-block;
+	text-align: center;
+}
+
+#iframeContainer {
+	left: 5000px;
+	display: none;
+}
+
+.chat-private-message {
+	background-color: #eef3f8;
+	border: 1px solid #d5dde5;
+	padding: 4px;
+}
+
+	.chat-private-message textarea {
+		height: 45px;
+		width: 300px;
+	}
+	
+	.chat-private-message input {
+		float: right;
+		height: 48px;
+		padding: 0 15px;
+	}]]></css_content>
+    <css_position>1</css_position>
+    <css_app>ipchat</css_app>
+    <css_app_hide>1</css_app_hide>
+    <css_attributes><![CDATA[title="Main" media="screen,print"]]></css_attributes>
+    <css_removed>0</css_removed>
+    <css_modules/>
+    <css_master_key>root</css_master_key>
+  </cssfile>
+</css>

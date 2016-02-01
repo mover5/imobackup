@@ -1,0 +1,44 @@
+
+#ddblueblockmenu{
+border: 1px solid black;
+border-bottom-width: 0;
+width: 185px;
+}
+
+#ddblueblockmenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font: normal 90% 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+}
+
+#ddblueblockmenu li a{
+display: block;
+padding: 3px 0;
+padding-left: 9px;
+width: 169px; /*185px minus all left/right paddings and margins*/
+text-decoration: none;
+color: white;
+background-color: #666666;
+border-bottom: 1px solid #000000;
+border-left: 7px solid #3c4c20;
+}
+
+* html #ddblueblockmenu li a{ /*IE only */
+width: 187px; /*IE 5*/
+w\idth: 169px; /*185px minus all left/right paddings and margins*/
+}
+
+#ddblueblockmenu li a:hover {
+background-color: #999999;
+border-left-color: #FF0000;
+}
+
+#ddblueblockmenu div.menutitle{
+color: white;
+border-bottom: 1px solid black;
+padding: 1px 0;
+padding-left: 5px;
+background-color: black;
+font: bold 90% 'Trebuchet MS', 'Lucida Grande', Arial, sans-serif;
+

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languageexport>
+  <languagegroup>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>ignoredusers_32upgrade</word_key>
+      <word_default>Convert Ignored Users</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>iuconvert_info</word_key>
+      <word_default>You can use this tool to convert ignored chat users following the upgrade to IP.Board 3.2.  If you ran this tool during the upgrade, or have run it since the upgrade, you do not need to run this again.</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>all_converted_sofar</word_key>
+      <word_default>All ignored chat users converted</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>upto_converted_sofar</word_key>
+      <word_default>Up to %s ignored chat users converted so far...</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>re_runtool</word_key>
+      <word_default>Convert</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>mem_tab_chat</word_key>
+      <word_default>Chat</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>mem_form_ban_chat</word_key>
+      <word_default>Ban user from chat</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>mem_form_chat_settings</word_key>
+      <word_default>Chat Settings</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>tools_32upgrade</word_key>
+      <word_default><![CDATA[[IP.Board 3.2 Upgrade Tools]]]></word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>btn_continue</word_key>
+      <word_default>Continue...</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_invalid_key</word_key>
+      <word_default>You have entered an invalid account key</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_title</word_key>
+      <word_default>IP.Chat</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>ordered_ipchat</word_key>
+      <word_default>Supply your license key to unlock IP.Chat </word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>enter_siteid</word_key>
+      <word_default>Enter license key here...</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>no_chat_account_number</word_key>
+      <word_default>You have not yet filled in your chat account number</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chatlogs_refreshed</word_key>
+      <word_default>The chat logs have been refreshed</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chatlog__hasleft</word_key>
+      <word_default>%s has left the room</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chatlog__hasentered</word_key>
+      <word_default>%s has entered the room</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__bothvisd</word_key>
+      <word_default>View both publicly and privately posted chat messages</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__privatevisd</word_key>
+      <word_default>View only messages posted in private chats</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__publicvisd</word_key>
+      <word_default>View only publicly posted chat messages</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__bothvis</word_key>
+      <word_default>Both</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__privatevis</word_key>
+      <word_default>Private</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__publicvis</word_key>
+      <word_default>Public</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__daterange</word_key>
+      <word_default> from </word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chatlogto</word_key>
+      <word_default> to </word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__submit</word_key>
+      <word_default>Update</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log__filter</word_key>
+      <word_default>Search for keyword</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log_message</word_key>
+      <word_default>Message</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log_user</word_key>
+      <word_default>User</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_log_date</word_key>
+      <word_default>Date</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_logs_none</word_key>
+      <word_default><![CDATA[There were no logs found.  Try clicking the &quot;Refresh&quot; button to update your local archives.]]></word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_logs_refresh</word_key>
+      <word_default>Refresh Logs</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>private_pre</word_key>
+      <word_default><![CDATA[[PRIVATE CHAT with %s] ]]></word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_no_chat</word_key>
+      <word_default>Your license does not include IP.Chat. Please contact account assistance for more information.</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_logs</word_key>
+      <word_default>Chat Logs</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_logs_sub</word_key>
+      <word_default>View Archived Chat Logs</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>kicked_pre</word_key>
+      <word_default>Kicked user </word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_chat</word_pack>
+      <word_key>chat_enter_key</word_key>
+      <word_default><![CDATA[In order to use IP.Chat you must <a href='%s'>provide your IP.Board license key</a>.]]></word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_menulang</word_pack>
+      <word_key>menu__ipchat_tools</word_key>
+      <word_default>Chat Tools</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_menulang</word_pack>
+      <word_key>menu__ipchat_logs</word_key>
+      <word_default>Chat Logs</word_default>
+    </lang>
+    <lang>
+      <word_app>ipchat</word_app>
+      <word_pack>admin_menulang</word_pack>
+      <word_key>menu__ipchat</word_key>
+      <word_default>Manage IP.Chat</word_default>
+    </lang>
+  </languagegroup>
+</languageexport>

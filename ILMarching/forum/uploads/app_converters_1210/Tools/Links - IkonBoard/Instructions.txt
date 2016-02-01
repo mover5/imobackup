@@ -1,0 +1,18 @@
+IkonBoard Redirect Setup Instructions
+
+Step One
+
+Open the ikonboard.cgi file from the Converters download and locate the following line:
+
+$URL_TO_IPB = "http://www.example.com/forums";
+
+
+Change http://www.example.com/forums here to the full URL of your IP.Board installation. Please ensure that the URL does NOT include a trailing slash at the end.
+
+Step Two
+
+In your old IkonBoard directory - take a backup of the current ikonboard.cgi file and upload the file from the Converters download to this location, overwriting the old one.
+
+Step Three
+
+Upload the ikonboard.php file from the Converters download to the root of your new IP.Board installation, where conf_global.php and initdata.php are located.

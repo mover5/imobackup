@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<versions>
+	<version>
+		<human>3.2 (Build 1.2.2)</human>
+		<long>32001</long>
+	</version>
+		<version>
+		<human>3.3 (Build 1.2.3)</human>
+		<long>33001</long>
+	</version>
+	<version>
+		<human>3.4 (Build 1.2.4)</human>
+		<long>34000</long>
+	</version>
+	<version>
+		<human>3.4 (Build 1.2.5)</human>
+		<long>34100</long>
+	</version>
+	<version>
+		<human>3.4 (Build 1.2.6)</human>
+		<long>34200</long>
+	</version>
+	<version>
+		<human>3.4 (Build 1.2.7)</human>
+		<long>34300</long>
+	</version>	
+	<version>
+		<human>3.4 (Build 1.2.8)</human>
+		<long>34400</long>
+	</version>
+		<version>
+		<human>3.4 (Build 1.2.9)</human>
+		<long>34500</long>
+	</version>
+	<version>
+		<human>3.4 (Build 1.2.10)</human>
+		<long>34600</long>
+	</version>
+</versions>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<tabitems>
+		<item>
+			<title>Chat Tools</title>
+			<subitems>
+				<subitem>
+					<subitemtitle>Chat Tools</subitemtitle>
+					<subitemlang>ipchat_tools</subitemlang>
+					<subsection>tools</subsection>
+					<subitemurl></subitemurl>
+					<subitemrolekey></subitemrolekey>
+					<subisredirect>0</subisredirect>
+				</subitem>
+			</subitems>
+		</item>
+	</tabitems>
+</menu>

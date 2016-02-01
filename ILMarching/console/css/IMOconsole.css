@@ -1,0 +1,73 @@
+
+body{
+margin:0;
+padding:0;
+line-height: 1.5em;
+}
+
+b{font-size: 110%;}
+em{color: red;}
+
+#maincontainer{
+width: 100%;
+padding:0;
+margin:0;
+}
+
+#topsection{
+background: #3c4c20;
+height: 100px; /*Height of top section*/
+}
+
+#topsection h1{
+margin: 0;
+padding-top: 15px;
+text-align: center;
+}
+
+#contentwrapper{
+float: left;
+width: 100%;
+}
+
+#contentcolumn{
+margin-left: 200px; /*Set left margin to LeftColumnWidth*/
+}
+
+#leftcolumn{
+float: left;
+width: 200px; /*Width of left column*/
+margin-left: -100%;
+background: #3c4c20;
+color: #FFFFFF;
+font-weight:900;
+}
+
+#leftcolumn a{
+font-weight: 900;
+text-decoration: none;
+}
+
+#leftcolumn a:visited{
+color: white;
+font-weight: 900;
+text-decoration: none;
+}
+
+#footer{
+clear: left;
+width: 100%;
+background: #3c4c20;
+color: #FFF;
+text-align: center;
+padding: 4px 0;
+}
+
+#footer a{
+color: #FFFF80;
+}
+
+.innertube{
+margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+margin-top: 0;
+}

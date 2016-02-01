@@ -1,0 +1,66 @@
+/* Buttons should be styled a bit differently, in order to make them look more button'ish. */
+.imo_button
+{
+    background: #cde7ff url(../images/theme/submit_bg.png) no-repeat;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    font-weight: bold;
+    color: #000000;
+    font-size: 14px;
+    width: 160px;
+    height: 20px;
+    margin-top: 8px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top: 10px;
+}
+
+.imo_button:hover
+{
+    border: 1px solid #aaa;
+    background: url(../images/theme/submit_bg.png) no-repeat 0 -140px #cde7ff;
+}
+
+#media
+{
+    width: 354px;
+    border: 5px solid #000;
+}
+
+td.imo_tab_up
+{
+    width: 121px;
+    height: 34px;
+    background: #000000 url(../images/tab_up.png) no-repeat;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+td.imo_tab_down
+{
+    width: 121px;
+    height: 34px;
+    background: #000000 url(../images/tab_down.png) no-repeat;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+td.imo_tab_up:hover
+{
+
+    background: url(../images/tab_up_hover.png) no-repeat #000000;;
+
+}
+
+td.imo_tab_down:hover
+{
+    background: url(../images/tab_down_hover.png) no-repeat #000000;
+
+}
+
